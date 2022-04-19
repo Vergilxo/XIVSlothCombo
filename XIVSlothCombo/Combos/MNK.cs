@@ -33,7 +33,8 @@ namespace XIVSlothComboPlugin.Combos
             Brotherhood = 7396,
             ForbiddenChakra = 3546,
             FormShift = 4262,
-            Thunderclap = 25762;
+            Thunderclap = 25762,
+            Feint = 7549;
 
 
         public static class Buffs
@@ -54,7 +55,8 @@ namespace XIVSlothComboPlugin.Combos
         public static class Debuffs
         {
             public const ushort
-                Demolish = 246;
+                Demolish = 246,
+                Feint = 1195;
         }
 
         public static class Levels
@@ -64,6 +66,7 @@ namespace XIVSlothComboPlugin.Combos
                 SnapPunch = 6,
                 Meditation = 15,
                 TwinSnakes = 18,
+                Feint = 22,
                 ArmOfTheDestroyer = 26,
                 Rockbreaker = 30,
                 Demolish = 30,
@@ -641,4 +644,19 @@ namespace XIVSlothComboPlugin.Combos
             return actionID;
         }
     }
-}
+    internal class MonkFeintProtection : CustomCombo
+    {
+        protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.MonkFeintProtection;
+
+        protected override uint Invoke(uint actionID, uint lastComboActionID, float comboTime, byte level)
+        {
+            if (actionID is MNK.Feint)
+            {
+                if (TargetHasEffect(MNK.Debuffs.Feint) && IsOffCooldown(actionID: MNK.Feint))
+                    return NIN.Rabbit;
+            }
+
+            return actionID;
+        }
+    }
+}  

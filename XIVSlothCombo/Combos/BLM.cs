@@ -37,7 +37,8 @@ namespace XIVSlothComboPlugin.Combos
             Sharpcast = 3574,
             Manafont = 158,
             Swiftcast = 7561,
-            Triplecast = 7421;
+            Triplecast = 7421,
+            Addle = 7560;
 
         public static class Buffs
         {
@@ -56,12 +57,14 @@ namespace XIVSlothComboPlugin.Combos
                 Thunder = 161,
                 Thunder2 = 162,
                 Thunder3 = 163,
-                Thunder4 = 1210;
+                Thunder4 = 1210,
+                Addle = 1203;
         }
 
         public static class Levels
         {
             public const byte
+                Addle = 8,
                 Swiftcast = 18,
                 Manafont = 30,
                 Fire3 = 35,
@@ -944,4 +947,20 @@ namespace XIVSlothComboPlugin.Combos
             return actionID;
         }
     }
-}
+    
+    internal class BlackMageAddleProtection : CustomCombo
+    {
+        protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BlackMageAddleProtection;
+
+        protected override uint Invoke(uint actionID, uint lastComboActionID, float comboTime, byte level)
+        {
+            if (actionID is BLM.Addle)
+            {
+                if (TargetHasEffect(BLM.Debuffs.Addle) && IsOffCooldown(actionID: BLM.Addle))
+                    return WHM.Stone1;
+            }
+
+            return actionID;
+        }
+    }
+}   
