@@ -54,7 +54,10 @@ namespace XIVSlothComboPlugin.Combos
             Raiton = 2267,
             Huton = 2269,
             GokaMekkyaku = 16491,
-            HyoshoRanryu = 16492;
+            HyoshoRanryu = 16492,
+            
+            //Debuff
+            Feint = 7549;
 
         public static class Buffs
         {
@@ -73,7 +76,8 @@ namespace XIVSlothComboPlugin.Combos
         public static class Debuffs
         {
             public const ushort
-            TrickAttack = 1054;
+            TrickAttack = 1054,
+            Feint = 1195;
         }
 
         public static class Levels
@@ -82,6 +86,7 @@ namespace XIVSlothComboPlugin.Combos
                 SpinningEdge = 1,
                 GustSlash = 4,
                 Mug = 15,
+                Feint = 22,
                 AeolianEdge = 26,
                 Ten = 30,
                 Chi = 35,
@@ -735,4 +740,20 @@ namespace XIVSlothComboPlugin.Combos
             return actionID;
         }
     }
-}
+    internal class NinjaFeintProtection : CustomCombo
+    {
+        protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.NinjaFeintProtection;
+
+        protected override uint Invoke(uint actionID, uint lastComboActionID, float comboTime, byte level)
+        {
+            if (actionID is NIN.Feint)
+            {
+                if (TargetHasEffect(NIN.Debuffs.Feint) && IsOffCooldown(actionID: NIN.Feint))
+                    return NIN.Rabbit;
+            }
+
+            return actionID;
+        }
+    }
+}   
+

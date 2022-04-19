@@ -69,7 +69,8 @@ namespace XIVSlothComboPlugin.Combos
         public static class Debuffs
         {
             public const ushort
-                DeathsDesign = 2586;
+                DeathsDesign = 2586,
+                Feint = 1195;
         }
 
         public static class Levels
@@ -551,5 +552,22 @@ namespace XIVSlothComboPlugin.Combos
 
             return actionID;
         }
+    }   
+    
+    internal class ReaperFeintProtection : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.ReaperFeintProtection;
+
+    protected override uint Invoke(uint actionID, uint lastComboActionID, float comboTime, byte level)
+    {
+        if (actionID is RPR.Feint)
+        {
+            if (TargetHasEffect(RPR.Debuffs.Feint) && IsOffCooldown(actionID: RPR.Feint))
+                return NIN.Rabbit;
+        }
+
+        return actionID;
     }
 }
+}   
+

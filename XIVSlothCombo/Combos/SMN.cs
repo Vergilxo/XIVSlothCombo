@@ -109,7 +109,8 @@ namespace XIVSlothComboPlugin.Combos
 
             // other
             Sleep = 25880,
-            Swiftcast = 7561;
+            Swiftcast = 7561,
+            Addle = 7560;
 
 
         public static class Buffs
@@ -123,12 +124,18 @@ namespace XIVSlothComboPlugin.Combos
                 EverlastingFlight = 16517,
                 SearingLight = 2703;
         }
+        public static class Debuffs
+        {
+            public const ushort
+                Addle = 1203;
+        }
 
         public static class Levels
         {
             public const byte
                 Aethercharge = 6,
                 SummonRuby = 6,
+                Addle = 8,
                 SummonTopaz = 15,
                 Swiftcast = 18,
                 SummonEmerald = 22,
@@ -415,4 +422,20 @@ namespace XIVSlothComboPlugin.Combos
             return actionID;
         }
     }
-}
+    
+    internal class SummonerAddleProtection : CustomCombo
+    {
+        protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.SummonerAddleProtection;
+
+        protected override uint Invoke(uint actionID, uint lastComboActionID, float comboTime, byte level)
+        {
+            if (actionID is SMN.Addle)
+            {
+                if (TargetHasEffect(SMN.Debuffs.Addle) && IsOffCooldown(actionID: SMN.Addle))
+                    return WHM.Stone1;
+            }
+
+            return actionID;
+        }
+    }
+}   

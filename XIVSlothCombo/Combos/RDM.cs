@@ -44,7 +44,10 @@ namespace XIVSlothComboPlugin.Combos
             Swiftcast = 7561,
             Manafication = 7521,
             Embolden = 7520,
-            LucidDreaming = 7562;
+            LucidDreaming = 7562,
+
+            //Debuffs
+            Addle = 7560;
 
         public static class Buffs
         {
@@ -59,7 +62,8 @@ namespace XIVSlothComboPlugin.Combos
 
         public static class Debuffs
         {
-            // public const short placeholder = 0;
+            public const ushort
+                Addle = 1203;
         }
 
         public static class Levels
@@ -67,6 +71,7 @@ namespace XIVSlothComboPlugin.Combos
             public const byte
                 Jolt = 2,
                 Verthunder = 4,
+                Addle = 8,
                 Veraero = 10,
                 Verthunder2 = 18,
                 Veraero2 = 22,
@@ -1220,6 +1225,21 @@ namespace XIVSlothComboPlugin.Combos
             return actionID;
         }
     }
-}
+    
+    internal class RedMageAddleProtection : CustomCombo
+    {
+        protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.RedMageAddleProtection;
 
+        protected override uint Invoke(uint actionID, uint lastComboActionID, float comboTime, byte level)
+        {
+            if (actionID is RDM.Addle)
+            {
+                if (TargetHasEffect(RDM.Debuffs.Addle) && IsOffCooldown(actionID: RDM.Addle))
+                    return WHM.Stone1;
+            }
+
+            return actionID;
+        }
+    }
+}   
 

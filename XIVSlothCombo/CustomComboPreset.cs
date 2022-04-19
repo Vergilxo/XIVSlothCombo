@@ -276,6 +276,11 @@ namespace XIVSlothComboPlugin
         [ParentCombo(BlackAoEComboFeature)]
         [CustomComboInfo("Foul / Manafont to Flare Option", "Adds foul when available during Astral Fire. Weaves manafont after foul for additional Flare", BLM.JobID, 0, "", "")]
         BlackAoEFoulOption = 2020,
+        
+        // Double Addle Protection
+        
+        [CustomComboInfo("Double Addle Protection", "Prevents the use of Addle when target already has the effect by replacing it with Stone 1",  BLM.JobID)]
+        BlackMageAddleProtection = 2021,
 
         #endregion
         // ====================================================================================
@@ -902,6 +907,11 @@ namespace XIVSlothComboPlugin
         [ConflictingCombos(DragoonSimple)]
         [CustomComboInfo("Wheeling Thrust/Fang and Claw Feature", "Fang And Claw Becomes Wheeling Thrust when under Enhanced Wheeling Thrust Buff.", DRG.JobID, 39, "", "")]
         DragoonFangAndClawFeature = 6701,
+        
+        // Double Feint Protecton
+        
+        [CustomComboInfo("Double Feint Protection", "Prevents the use of Feint when target already has the effect by replacing it with Rabbit", DRG.JobID)]
+        DragoonFeintProtection = 6702,
 
         #endregion
         // ====================================================================================
@@ -1224,6 +1234,11 @@ namespace XIVSlothComboPlugin
         [ParentCombo(MnkCDsOnAoEComboFeature)]
         [CustomComboInfo("Meditation on AoE Combo", "Adds Meditation to the AoE Combo.", MNK.JobID, 0, "", "")]
         MnkMeditationOnAoEComboFeature = 9023,
+        
+        // Double Feint Protection
+        
+        [CustomComboInfo("Double Feint Protection", "Prevents the use of Feint when target already has the effect by replacing it with Rabbit",  MNK.JobID)]
+        MonkFeintProtection = 9024,
 
         #endregion
         // ====================================================================================
@@ -1338,6 +1353,11 @@ namespace XIVSlothComboPlugin
         [ParentCombo(NinSimpleAoE)]
         [CustomComboInfo("Bunshin Feature", "Adds Bunshin and Phantom Kamaitachi to the combo.", NIN.JobID)]
         NinSimpleAoeBunshin = 10030,
+        
+        // Double Feint Protection
+        
+        [CustomComboInfo("Double Feint Protection", "Prevents the use of Feint when target already has the effect by replacing it with Rabbit",  NIN.JobID)]
+        NinjaFeintProtection = 10031,
 
         #endregion
         // ====================================================================================
@@ -1429,6 +1449,7 @@ namespace XIVSlothComboPlugin
 
         [CustomComboInfo("Double Reprisal Protection", "Prevents the use of Reprisal when target already has the effectby replacing it with Stone", PLD.JobID)]
         PaladinReprisalProtection = 11030,
+        
 
         #endregion
         // ====================================================================================
@@ -1570,6 +1591,11 @@ namespace XIVSlothComboPlugin
         [ParentCombo(ReaperHarpeHarvestMoonFeature)]
         [CustomComboInfo("Combat Harpe Option", "Prevent Harvest Moon replacing Harpe when you are not in combat.\nThis option also affects the Ranged Filler Option for the Slice Combo Feature.", RPR.JobID, 0, "", "OoOoH uNaSpEcTeD dAmAgE")]
         ReaperHarpeHarvestMoonCombatOption = 12056,
+        
+        // Double Feint Protection
+        
+        [CustomComboInfo("Double Feint Protection", "Prevents the use of Feint when target already has the effect by replacing it with Rabbit",  RPR.JobID)]
+        ReaperFeintProtection = 12057,
 
         #endregion
         // ====================================================================================
@@ -1659,6 +1685,11 @@ namespace XIVSlothComboPlugin
 
         [CustomComboInfo("Swiftcast into Verraise Feature", "Changes Swiftcast to Verraise when under the effect of Swiftcast.", RDM.JobID, 0, "Swifty Verraise", "You're panicing right now, aren't you?")]
         RedMageSwiftVerraise = 13023,
+        
+        // Double Addle Protection
+        
+        [CustomComboInfo("Double Addle Protection", "Prevents the use of Addle when target already has the effect by replacing it with Stone 1",  RDM.JobID)]
+        RedMageAddleProtection = 13023,
 
         #endregion
         // ====================================================================================
@@ -1876,6 +1907,11 @@ namespace XIVSlothComboPlugin
 
         [CustomComboInfo("Ikishoten on combos", "Adds Ikishoten to most Single Target/AoE combos when at or below 50 Kenki", SAM.JobID, 0, "Gauge pls", "You heard me. Gauge pls")]
         SamuraiIkishotenonmaincombo = 15027,
+        
+        // Double Feint Protection
+        
+        [CustomComboInfo("Double Feint Protection", "Prevents the use of Feint when target already has the effect by replacing it with Rabbit",  SAM.JobID)]
+        SamuraiFeintProtection = 15028,
 
         #endregion
         // ====================================================================================
@@ -2025,6 +2061,11 @@ namespace XIVSlothComboPlugin
         [ParentCombo(SummonerAOEComboFeature)]
         [CustomComboInfo("Adds Rekindle to AOE Combo", "Adds Rekindle to the AOE Combo.", SMN.JobID, 0, "Phoenix Dingus Feature", "You only need to worry about healing yourself.\nIts okay.")]
         SummonerAOETargetRekindleFeature = 17029,
+        
+        // Double Addle Protection
+        
+        [CustomComboInfo("Double Addle Protection", "Prevents the use of Addle when target already has the effect by replacing it with Stone 1",  SMN.JobID)]
+        SummonerAddleProtection = 17030,
 
         #endregion
         // ====================================================================================
